@@ -6,7 +6,7 @@ import runLoopAnimation from '../../modules/runLoopAnimation';
 import { ILayout, IParticle } from '../../modules/types';
 import Shapes from './Shapes';
 
-const { concat, interpolate } = Animated;
+const { concat, interpolateNode } = Animated;
 
 type StaticProps = {
   Shapes: typeof Shapes;
@@ -34,7 +34,7 @@ const Particle: StaticProps & React.FC<Props> = ({ data, layout }) => {
         width: data.size,
         height: data.size,
         left: data.deltas.left * layout.width,
-        bottom: interpolate(animation, {
+        bottom: interpolateNode(animation, {
           inputRange: [0, 1],
           outputRange: [
             layout.height + data.size * data.deltas.bottom,
@@ -44,7 +44,7 @@ const Particle: StaticProps & React.FC<Props> = ({ data, layout }) => {
         transform: [
           {
             rotateX: concat(
-              interpolate(animation, {
+              interpolateNode(animation, {
                 inputRange: [0, 1],
                 outputRange: [0, data.deltas.rotateX * 360 * 10],
               }),
@@ -53,7 +53,7 @@ const Particle: StaticProps & React.FC<Props> = ({ data, layout }) => {
           },
           {
             rotateY: concat(
-              interpolate(animation, {
+              interpolateNode(animation, {
                 inputRange: [0, 1],
                 outputRange: [0, data.deltas.rotateY * 360 * 5],
               }),
@@ -61,7 +61,7 @@ const Particle: StaticProps & React.FC<Props> = ({ data, layout }) => {
             ),
           },
           {
-            translateX: interpolate(animation, {
+            translateX: interpolateNode(animation, {
               inputRange: [0, 0.4, 0.8, 1],
               outputRange: [
                 0,
