@@ -42,6 +42,7 @@ const runLoopAnimation = ({ delay, duration }: RunLoopAnimationParams) => {
   return block([
     cond(and(not(clockRunning(clock)), 1), startClock(clock)),
     cond(eq(delayed, 0), set(delayed, add(delay, clock))),
+    // @ts-ignore
     cond(greaterThan(clock, delayed), timing(clock, state, config)),
     cond(state.finished, [
       set(state.finished, 0),

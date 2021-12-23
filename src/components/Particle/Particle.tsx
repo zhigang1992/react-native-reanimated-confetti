@@ -77,6 +77,7 @@ const Particle: StaticProps & React.FC<Props> = ({ data, layout }) => {
     [data, layout]
   );
 
+  // @ts-ignore
   return <Animated.View style={animatedStyles}>{data.shape}</Animated.View>;
 };
 
