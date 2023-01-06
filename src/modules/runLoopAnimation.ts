@@ -1,4 +1,4 @@
-import Animated, { Easing } from 'react-native-reanimated';
+import Animated, { EasingNode } from 'react-native-reanimated';
 
 const {
   Clock,
@@ -33,7 +33,7 @@ const runLoopAnimation = ({ delay, duration }: RunLoopAnimationParams) => {
 
   const config = {
     duration,
-    easing: Easing.quad,
+    easing: EasingNode.quad,
     toValue: new Value(1),
   };
 
